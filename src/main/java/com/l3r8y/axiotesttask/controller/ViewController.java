@@ -1,6 +1,5 @@
 package com.l3r8y.axiotesttask.controller;
 
-import com.jcabi.log.Logger;
 import com.l3r8y.axiotesttask.dto.CustomerDTO;
 import com.l3r8y.axiotesttask.service.CustomerService;
 import java.util.List;
@@ -33,10 +32,6 @@ public class ViewController {
         final Model model
     ) {
         model.addAttribute("name", name);
-        Logger.info(
-            this,
-            String.format("index(%s) called", name)
-        );
         return "index";
     }
 
