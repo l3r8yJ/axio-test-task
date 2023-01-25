@@ -1,15 +1,6 @@
-package com.l3r8y.axiotesttask.entity;
+package com.l3r8y.axiotesttask.dto;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,51 +9,30 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Entity
-@Table(name = "customer", schema = "public", catalog = "postgres")
 @Getter
 @Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CustomerEntity implements Serializable {
+public class CustomerDTO {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id")
     private int id;
 
-    @Basic
-    @Column(name = "fio")
     private String fio;
 
-    @Basic
-    @Column(name = "passport")
     private String passport;
 
-    @Basic
-    @Column(name = "marital")
     private boolean marital;
 
-    @Basic
-    @Column(name = "address")
     private String address;
 
-    @Basic
-    @Column(name = "phone")
     private String phone;
 
-    @Basic
-    @Column(name = "employment")
     private String employment;
 
-    @Basic
-    @Column(name = "credit_amount")
     private BigDecimal creditAmount;
 
-    @Basic
-    @Column(name = "id_request")
     private int idRequest;
 
 
@@ -85,7 +55,7 @@ public class CustomerEntity implements Serializable {
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || this.getClass() != o.getClass()) return false;
-        final CustomerEntity that = (CustomerEntity) o;
+        final CustomerDTO that = (CustomerDTO) o;
         return this.id == that.id
             && this.marital == that.marital
             && this.idRequest == that.idRequest
@@ -95,5 +65,4 @@ public class CustomerEntity implements Serializable {
             && Objects.equals(this.phone, that.phone)
             && Objects.equals(this.employment, that.employment)
             && Objects.equals(this.creditAmount, that.creditAmount);
-    }
-}
+    }}

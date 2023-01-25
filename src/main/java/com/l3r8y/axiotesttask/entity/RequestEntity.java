@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.io.Serializable;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Objects;
 import lombok.AllArgsConstructor;
@@ -25,7 +27,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RequestEntity {
+public class RequestEntity implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -42,7 +44,7 @@ public class RequestEntity {
 
     @Basic
     @Column(name = "amount")
-    private BigInteger amount;
+    private BigDecimal amount;
 
     @Override
     public int hashCode() {

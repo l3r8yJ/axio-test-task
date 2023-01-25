@@ -9,5 +9,4 @@ public class AxioTestTaskApplication {
     public static void main(final String[] args) {
         SpringApplication.run(AxioTestTaskApplication.class, args);
     }
-
 }
