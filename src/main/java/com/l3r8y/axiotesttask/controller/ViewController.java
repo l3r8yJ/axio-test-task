@@ -20,7 +20,10 @@ public class ViewController {
         final Model model
     ) {
         model.addAttribute("name", name);
-        Logger.info(this, "#index() called");
+        Logger.info(
+            this,
+            String.format("index(%s) called", name)
+        );
         return "index";
     }
 }
