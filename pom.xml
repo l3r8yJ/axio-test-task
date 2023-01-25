@@ -14,7 +14,7 @@
   <name>axio-test-task</name>
   <description>axio-test-task</description>
   <properties>
-    <java.version>11</java.version>
+    <java.version>17</java.version>
   </properties>
   <dependencies>
     <dependency>
