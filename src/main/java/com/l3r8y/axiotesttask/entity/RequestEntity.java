@@ -20,7 +20,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "request", schema = "public", catalog = "postgres")
+@Table(name = "request")
 @Getter
 @Setter
 @ToString
