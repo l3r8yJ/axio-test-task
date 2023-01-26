@@ -2,8 +2,8 @@ architect:
   - l3r8yJ
 merge:
   script: |-
-    update-java-alternatives --set java-1.17.0-openjdk-amd64
-    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+    sudo update-java-alternatives --set java-1.17.0-openjdk-amd64
+    sudo export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
     mvn clean install --errors-batch-mode
 release:
   pre: false
