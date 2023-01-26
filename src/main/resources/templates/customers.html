@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
@@ -14,35 +14,35 @@
 <div class="container mt-3">
     <h2>Клиенты</h2>
     <a href="/">Назад</a>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>ФИО</th>
-            <th>Паспорт</th>
-            <th>Семейное положение</th>
-            <th>Адрес прописки</th>
-            <th>Контактный телефон</th>
-            <th>Сведения о занятости</th>
-            <th>Сумма желаемого кредита</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>John Doe</td>
-            <td>john@example.com</td>
-        </tr>
-        <tr>
-            <td>Mary</td>
-            <td>Moe</td>
-            <td>mary@example.com</td>
-        </tr>
-        <tr>
-            <td>July</td>
-            <td>Dooley</td>
-            <td>july@example.com</td>
-        </tr>
-        </tbody>
-    </table>
+    <div th:switch="${customers}">
+        <h2 th:case="null">Клиенты пока отсутствуют</h2>
+        <div th:case="*">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>ФИО</th>
+                    <th>Паспорт</th>
+                    <th>Семейное положение</th>
+                    <th>Адрес прописки</th>
+                    <th>Контактный телефон</th>
+                    <th>Сведения о занятости</th>
+                    <th>Сумма желаемого кредита</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="customer : ${customers}">
+                        <td th:text="${customer.fio}"></td>
+                        <td th:text="${customer.passport}"></td>
+                        <td th:text="${customer.marital}"></td>
+                        <td th:text="${customer.address}"></td>
+                        <td th:text="${customer.phone}"></td>
+                        <td th:text="${customer.employment}"></td>
+                        <td th:text="${#numbers.formatCurrency(customer.creditAmount)}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 </body>
 </html>
