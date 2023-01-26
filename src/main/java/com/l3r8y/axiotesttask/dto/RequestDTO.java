@@ -1,10 +1,8 @@
 package com.l3r8y.axiotesttask.dto;
 
 import com.l3r8y.axiotesttask.entity.CustomerEntity;
-import com.l3r8y.axiotesttask.entity.RequestEntity;
 import java.math.BigDecimal;
 import java.util.Objects;
-import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

@@ -1,7 +1,7 @@
 package com.l3r8y.axiotesttask.service.impl;
 
-import com.l3r8y.axiotesttask.repository.CustomerRepository;
 import com.l3r8y.axiotesttask.dto.CustomerDTO;
+import com.l3r8y.axiotesttask.repository.CustomerRepository;
 import com.l3r8y.axiotesttask.service.CustomerService;
 import com.l3r8y.axiotesttask.util.CustomerMapper;
 import java.util.List;

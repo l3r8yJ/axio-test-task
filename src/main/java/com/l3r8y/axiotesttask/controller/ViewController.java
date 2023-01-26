@@ -1,6 +1,5 @@
 package com.l3r8y.axiotesttask.controller;
 
-import com.l3r8y.axiotesttask.dto.RequestDTO;
 import com.l3r8y.axiotesttask.service.CustomerService;
 import com.l3r8y.axiotesttask.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
