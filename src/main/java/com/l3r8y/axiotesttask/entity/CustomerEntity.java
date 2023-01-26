@@ -27,7 +27,7 @@ import lombok.Setter;
 @Builder
 public class CustomerEntity implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "id")
     private int id;

@@ -1,12 +1,10 @@
 package com.l3r8y.axiotesttask.service.impl;
 
-import com.l3r8y.axiotesttask.dto.CustomerDTO;
+import com.l3r8y.axiotesttask.entity.CustomerEntity;
 import com.l3r8y.axiotesttask.repository.CustomerRepository;
 import com.l3r8y.axiotesttask.service.CustomerService;
-import com.l3r8y.axiotesttask.util.CustomerMapper;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,38 +19,34 @@ public final class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<CustomerDTO> all() {
+    public List<CustomerEntity> all() {
+        return this.repository.findAll();
+    }
+
+    @Override
+    public void create(final CustomerEntity entity) {
+        this.repository.save(entity);
+    }
+
+    @Override
+    public void update(final CustomerEntity entity) {
+        this.repository.save(entity);
+    }
+
+    @Override
+    public void delete(final CustomerEntity entity) {
+        this.repository.delete(entity);
+    }
+
+    @Override
+    public CustomerEntity byId(final Long id) {
         return this.repository
-            .findAll()
-            .stream()
-            .map(CustomerMapper::transform)
-            .collect(Collectors.toList());
+            .findById(id)
+            .orElseThrow(NoSuchElementException::new);
     }
 
     @Override
-    public void create(final CustomerDTO dto) {
-        this.repository.save(CustomerMapper.transform(dto));
-    }
-
-    @Override
-    public void update(final CustomerDTO dto) {
-        this.repository.save(CustomerMapper.transform(dto));
-    }
-
-    @Override
-    public void delete(final CustomerDTO dto) {
-        this.repository.delete(CustomerMapper.transform(dto));
-    }
-
-    @Override
-    public CustomerDTO byId(final Long id) {
-        return CustomerMapper.transform(
-            this.repository.findById(id).orElseThrow(NoSuchElementException::new)
-        );
-    }
-
-    @Override
-    public List<CustomerDTO> search(final CustomerDTO dto) {
+    public List<CustomerEntity> search(final CustomerEntity dto) {
         return null;
     }
 }

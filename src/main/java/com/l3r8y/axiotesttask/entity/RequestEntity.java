@@ -29,7 +29,7 @@ import lombok.ToString;
 @Builder
 public class RequestEntity implements Serializable {
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     @Column(name = "id_request")
     private long idRequest;

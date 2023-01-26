@@ -33,7 +33,7 @@
                     <tr th:each="customer : ${customers}">
                         <td th:text="${customer.fio}"></td>
                         <td th:text="${customer.passport}"></td>
-                        <td th:text="${customer.marital}"></td>
+                        <td th:text="${customer.marital} ? 'Состоит в браке' : 'Не состоит в браке'"></td>
                         <td th:text="${customer.address}"></td>
                         <td th:text="${customer.phone}"></td>
                         <td th:text="${customer.employment}"></td>

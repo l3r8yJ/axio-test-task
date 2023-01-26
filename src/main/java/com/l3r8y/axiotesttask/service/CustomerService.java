@@ -1,19 +1,19 @@
 package com.l3r8y.axiotesttask.service;
 
-import com.l3r8y.axiotesttask.dto.CustomerDTO;
+import com.l3r8y.axiotesttask.entity.CustomerEntity;
 import java.util.List;
 
 public interface CustomerService {
 
-    List<CustomerDTO> all();
+    List<CustomerEntity> all();
 
-    void create(CustomerDTO dto);
+    void create(CustomerEntity dto);
 
-    void update(CustomerDTO dto);
+    void update(CustomerEntity dto);
 
-    void delete(CustomerDTO dto);
+    void delete(CustomerEntity dto);
 
-    CustomerDTO byId(Long id);
+    CustomerEntity byId(Long id);
 
-    List<CustomerDTO> search(CustomerDTO dto);
+    List<CustomerEntity> search(CustomerEntity dto);
 }

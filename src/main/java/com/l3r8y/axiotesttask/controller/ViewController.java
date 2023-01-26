@@ -1,5 +1,6 @@
 package com.l3r8y.axiotesttask.controller;
 
+import com.l3r8y.axiotesttask.entity.CustomerEntity;
 import com.l3r8y.axiotesttask.service.CustomerService;
 import com.l3r8y.axiotesttask.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,8 @@ public class ViewController {
     }
 
     @GetMapping("/request/new")
-    public String newRequest() {
+    public String newRequest(final Model model) {
+        model.addAttribute("customer", new CustomerEntity());
         return "request-new";
     }
 

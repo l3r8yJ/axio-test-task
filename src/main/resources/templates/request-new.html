@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
@@ -14,38 +14,37 @@
 <div class="container mt-3">
     <h2>Новая заявка</h2>
     <a href="/">Назад</a>
-    <form action="/request/new/post">
+    <form action="#" th:action="@{/request/new/send}" th:object="${customer}" method="post">
         <div class="mb-3 mt-3">
             <label for="fio" class="form-label">ФИО:</label>
-            <input class="form-control" id="fio" placeholder="ФИО" name="fio">
+            <input type="text" th:field="*{fio}" class="form-control" id="fio" placeholder="ФИО">
         </div>
         <div class="mb-3">
             <label for="passport" class="form-label">Паспортные данные:</label>
-            <input class="form-control" id="passport" placeholder="Серия и номер" name="passport">
+            <input type="text" th:field="*{passport}" class="form-control" id="passport" placeholder="Серия и номер">
         </div>
         <div class="mb-3">
             <label for="marital" class="form-label">Семейное положение:</label>
-            <select name="marital" class="form-control"
-                    id="marital">
-                <option selected="true" value="false">Нет</option>
-                <option value="true">Да</option>
+            <select th:field="*{marital}" class="form-control">
+                <option th:value="false" th:text="'Не состою в браке'"></option>
+                <option th:value="true" th:text="'Состою в браке'"></option>
             </select>
         </div>
         <div class="mb-3">
             <label for="address" class="form-label">Адрес прописки:</label>
-            <input class="form-control" id="address" placeholder="Адрес прописки" name="address">
+            <input th:field="*{address}" class="form-control" id="address" placeholder="Адрес прописки">
         </div>
         <div class="mb-3">
             <label for="phone" class="form-label">Контактный телефон:</label>
-            <input class="form-control" id="phone" placeholder="Контактный телефон" name="phone">
+            <input th:field="*{phone}" class="form-control" id="phone" placeholder="Контактный телефон">
         </div>
         <div class="mb-3">
             <label for="employment" class="form-label">Сведения о занятости:</label>
-            <input class="form-control" id="employment" placeholder="Период работы, должность, название организации" name="employment">
+            <input th:field="*{employment}" class="form-control" id="employment" placeholder="Период работы, должность, название организации">
         </div>
         <div class="mb-3">
             <label for="creditAmount" class="form-label">Сумма желаемого кредита</label>
-            <input class="form-control" id="creditAmount" placeholder="000 000 000 ₽" name="creditAmount">
+            <input th:field="*{creditAmount}" class="form-control" id="creditAmount" placeholder="10000₽">
         </div>
         <button type="submit" class="btn btn-primary">Отправить заявку</button>
     </form>
