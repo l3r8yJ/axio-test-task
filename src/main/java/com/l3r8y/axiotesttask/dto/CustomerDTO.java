@@ -35,7 +35,6 @@ public class CustomerDTO {
 
     private int idRequest;
 
-
     @Override
     public int hashCode() {
         return Objects.hash(
