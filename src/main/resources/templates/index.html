@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>Index</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Latest compiled JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <title>AxioTestTask</title>
 </head>
 <body>
-  <p th:text="'Hello ' + ${name} + '!'"/>
+  <div class="container-fluid p-5 bg-primary text-white text-center">
+    <h1>Axio Test Task</h1>
+  </div>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="d-flex justify-content-evenly">
+          <h3>Список клиентов</h3>
+          <a class="btn btn-primary fw-light" href="/customers" role="button">
+            <img style="width: 25px; height: auto" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABNElEQVR4nO2ZQUoDQRBF+xiZeAePIcJ4nGRciYvkRLpTxoV4II0uIggvtJRSikI3090k5L9VzwxUTVFvZvNDEEIcF8AFMAJvTOcZuAPOXP1z4N6eTeXV3rX/PcSaelwB1xXrr/wmIltgAXQFttsBS6tJg/p9vPlgF4upDf5oOLhBatYfg/kWmVVoNHOD1Ky/iReflG7imrWpjwZJQxtJRGrlIrUSkVq5SK1EpFYuUisRqZWL1EpEauUitRKRWrlIrUSkVi5SKxGplYvUOma1NnbuqjaqU/vEyr8Ei7AiywMc5NLnI71LlGJwMt/3QYC5DfH+nVjZgxVlibreAKfuXjzfumCpbIb4hW1mLNzo459znVS3NLb6wa2+mrpNcB9jZAiHCj/D0Cq/92YAj8BTu44i7AU72v/CVD9vcEcAAAAASUVORK5CYII="
+                 alt="Клиенты">
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="d-flex justify-content-evenly">
+          <h3>Заявки на кредит</h3>
+          <a class="btn btn-primary fw-light" href="/requests" role="button">
+            <img style="width: 25px; height: auto" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA6klEQVR4nO3aPQoCMRiE4a9S8DJWFuoZLDyUf5WdB7PyAK5eQWxeCaSwiJIF0YnM034JZJhdtshGmFkVYADsgAt10rplqAG29HcHJqEE6PLhppXr93n9CRiFCrIe64fAMW87RKtBEmAM3Pi+Dtik9zo+ESTvWzw9lt+2/liQXwBm+bhd00HenvfvggBX9F1rgjQl3gSp+iCKvOyUhuWBKBxEDG5EDG5EDG5EDG5EDG5EDG5EDG5EDG5EDG5EDG5EDG5EDG6koUa6PJuFOGCez3ouDdOdXGtWr34Y2PzwPrCPcwpRvAw1syh5ABWhlhJPN+dyAAAAAElFTkSuQmCC"
+                 alt="Заявки">
+          </a>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="d-flex justify-content-evenly">
+          <h3>Подписать договор</h3>
+          <a class="btn btn-primary fw-light" href="/assign" role="button">
+            <img style="width: 25px; height: auto" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABV0lEQVR4nO3ZrU4DQRSG4U/UgkD2MkjwoAk4gqPQ8lPA1HEdcAnVGC4Ag8AQZO+AGhQYICTtSyYZMZTdzS6m52zmMW22I+bN6Y7YlbKsEWADuAPegA/gEdiXJ0AP+KbYjTwAOsAT1fbkAbAGPFeEPMgq4ASYAls1Yt5lETAE5nGT28n1sphXGY8YFfxeFHMrTxElMeE0W5e3iIWYcJr15DEC2AE24/eOrADOGkSM4rqpLPlnxBw4lRXAMTCLm7tqEHEpK9oSMcgRFuRJtGASF7IiR1jRlkn0c4QF5EkYQZ6EEeRJ+J/EuawgRxhBSyZxlCMsAA6TSdR9eBbWD2QFsAp8uo4IgN3khh2q3o1dum5pgOvkJUrhJs1HBMBk4Y3Qr816iegmT8j/xLiICIADys2Sz74sA8ZU+wpHs6wDXgo2P4kHQHjttSIPgPsYM45/s+6y95TJsR9jsZZU4R8K0AAAAABJRU5ErkJggg=="
+                 alt="Подписать договор">
+          </a>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="d-flex justify-content-evenly">
+          <h3>Новый заявка</h3>
+          <a class="btn btn-primary fw-light" href="/request/new" role="button">
+            <img style="width: 25px; height: auto" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADaklEQVR4nO2aS09UQRCFrwEBg1GGh7DUJYGgf0IFBQF3oO4gsOERdAu4VlcmJP4ODTFqxJioEcXXRsHBlcrCiDsRA+YzBecmHR3uPOhh7hBOcpPJdM+pqttV3dVVEwR72KUAqoEu4DowDcwDP4DfeuzzB43ZnE4gEcQBQAVwCbgP/CF7rAP3gItAeSEMOABcBpYcpVaBGWBcK9NobxzYryeh72xsAnik34T4CozZy9kpI84CnxwFXgJ9wOEcuKqAfmDO4VsE2vLtRrccga+AUx75W4E3Dv+U99UBGqS44ScwBJR4FbIppwQYAVac1a73RX5My412nWYvxNEyW4AFyUyaDtslrHMIXwC13rRNLzsBPJFsi8mG7cRE6E7PgErv2qbXoRJ47rhZ9jHjBLa5U3VeNM1MjxrHK6Zy2WLDwM57TGQYMyvSqTWbwy48J4Y8KLEBDzyjTvCndzHginNOlMTIkFLgrehG000uV6pgOLld4T4NMQBnRLcUuSpK3jZ2iMATPBuyz9lJe6MmPtCkPh+CfRtiAAZEeTeIuE+sKyPNOgHcQUMSut+spdQT6JbMh76E5sMQA/BYtB3BvwBuaHA8iL8hV0V7LdWgXUEN54rAkG7R3k41+FGDjUVgSJNo51MNLmuwuggMqRXtt1SDthMYyjJVLl8I0su3g9uwuqsNWS4i16qLcq1dE+zTGuwsAkPOR22/4YE4UewHYpcGZ4ooRWnfKhkLk8aquBrCZnIbJo2HtppkBWVDf4wNGRTldNSkC5o0F+OL1WtR9qQ7aL5o4ukYGtIuus9p2xAq7SPL41Z8eCe64UwrjGGtdyRGhoyJaiHjppD1J/QjK4q1BAUGcAL4JZ2ya2WoPxG+gZq8aZlZXpWULjdzIahQ4RgVkgtRxD4IzEqH2Zz7jHob1p0N2wp13rWNPvieSvbiths+avQkHTc77k3b6JhISqZl5Ud9Edc7braignKpF/L/t9gxJ7DNnY74FlLhbACooNzm8cS2VkZ4TmwEdl577+q+hsuOarEDufyLQXEw6KQdoSt56xZnsjqjTjqDMlJLrydVd2pSt6lMj31u1qVoUnPDOkGYdgwX6h8Qlpv1WkFZV4BssaabaU9BDEgFKyhbLdZubcAd9R6/O3+qsc/v7XqqOR1b3if2EBQ//gII7bjCd5MRxAAAAABJRU5ErkJggg=="
+                 alt="Новая заявка">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
