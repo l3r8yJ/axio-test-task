@@ -25,28 +25,28 @@ public final class CustomerServiceImpl implements CustomerService {
         return this.repository
             .findAll()
             .stream()
-            .map(CustomerMapper::toDTO)
+            .map(CustomerMapper::transform)
             .collect(Collectors.toList());
     }
 
     @Override
     public void create(final CustomerDTO dto) {
-        this.repository.save(CustomerMapper.toEntity(dto));
+        this.repository.save(CustomerMapper.transform(dto));
     }
 
     @Override
     public void update(final CustomerDTO dto) {
-        this.repository.save(CustomerMapper.toEntity(dto));
+        this.repository.save(CustomerMapper.transform(dto));
     }
 
     @Override
     public void delete(final CustomerDTO dto) {
-        this.repository.delete(CustomerMapper.toEntity(dto));
+        this.repository.delete(CustomerMapper.transform(dto));
     }
 
     @Override
     public CustomerDTO byId(final Long id) {
-        return CustomerMapper.toDTO(
+        return CustomerMapper.transform(
             this.repository.findById(id).orElseThrow(NoSuchElementException::new)
         );
     }
