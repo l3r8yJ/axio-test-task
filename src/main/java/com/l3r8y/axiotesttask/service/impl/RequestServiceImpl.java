@@ -4,7 +4,6 @@ import com.l3r8y.axiotesttask.entity.CustomerEntity;
 import com.l3r8y.axiotesttask.entity.RequestEntity;
 import com.l3r8y.axiotesttask.repository.RequestRepository;
 import com.l3r8y.axiotesttask.service.RequestService;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
