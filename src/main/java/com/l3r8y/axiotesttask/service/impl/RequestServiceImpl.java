@@ -1,11 +1,11 @@
 package com.l3r8y.axiotesttask.service.impl;
 
-import com.l3r8y.axiotesttask.dto.RequestDTO;
+import com.l3r8y.axiotesttask.entity.CustomerEntity;
+import com.l3r8y.axiotesttask.entity.RequestEntity;
 import com.l3r8y.axiotesttask.repository.RequestRepository;
 import com.l3r8y.axiotesttask.service.RequestService;
-import com.l3r8y.axiotesttask.util.RequestMapper;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +20,19 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
-    public List<RequestDTO> all() {
-        return this.repository
-            .findAll()
-            .stream()
-            .map(RequestMapper::transform)
-            .collect(Collectors.toList());
+    public List<RequestEntity> all() {
+        return this.repository.findAll();
+    }
+
+    @Override
+    public void create(final CustomerEntity customer) {
+        final RequestEntity entity = RequestEntity
+            .builder()
+            .status(new Random().nextBoolean())
+            .period(new Random().nextInt(360 - 30) + 30)
+            .amount(customer.getCreditAmount())
+            .customer(customer)
+            .build();
+        this.repository.save(entity);
     }
 }
