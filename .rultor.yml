@@ -4,6 +4,7 @@ merge:
   script: |-
     sudo update-java-alternatives --set java-1.17.0-openjdk-amd64
     sudo export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+    mvn -v
     mvn clean install --errors
 release:
   pre: false
@@ -12,4 +13,5 @@ release:
     git commit -am "${tag}"
     sudo update-java-alternatives --set java-1.17.0-openjdk-amd64
     sudo export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+    mvn -v
     mvn clean install --errors
