@@ -6,22 +6,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Table(name = "customer")
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -60,10 +60,8 @@ public class CustomerEntity implements Serializable {
     @Column(name = "credit_amount")
     private BigDecimal creditAmount;
 
-    @Basic
-    @Column(name = "id_request")
-    private int idRequest;
-
+    @OneToMany(mappedBy = "customer")
+    private Set<RequestEntity> requests;
 
     @Override
     public int hashCode() {
@@ -75,8 +73,7 @@ public class CustomerEntity implements Serializable {
             this.address,
             this.phone,
             this.employment,
-            this.creditAmount,
-            this.idRequest
+            this.creditAmount
         );
     }
 
@@ -87,7 +84,6 @@ public class CustomerEntity implements Serializable {
         final CustomerEntity that = (CustomerEntity) o;
         return this.id == that.id
             && this.marital == that.marital
-            && this.idRequest == that.idRequest
             && Objects.equals(this.fio, that.fio)
             && Objects.equals(this.passport, that.passport)
             && Objects.equals(this.address, that.address)

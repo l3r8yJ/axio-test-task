@@ -1,7 +1,9 @@
 package com.l3r8y.axiotesttask.dto;
 
+import com.l3r8y.axiotesttask.entity.RequestEntity;
 import java.math.BigDecimal;
 import java.util.Objects;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,6 +37,8 @@ public class CustomerDTO {
 
     private int idRequest;
 
+    private Set<RequestEntity> requests;
+
     @Override
     public int hashCode() {
         return Objects.hash(
@@ -46,7 +50,8 @@ public class CustomerDTO {
             this.phone,
             this.employment,
             this.creditAmount,
-            this.idRequest
+            this.idRequest,
+            this.requests
         );
     }
 
@@ -63,5 +68,6 @@ public class CustomerDTO {
             && Objects.equals(this.address, that.address)
             && Objects.equals(this.phone, that.phone)
             && Objects.equals(this.employment, that.employment)
-            && Objects.equals(this.creditAmount, that.creditAmount);
+            && Objects.equals(this.creditAmount, that.creditAmount)
+            && Objects.equals(this.requests, that.requests);
     }}

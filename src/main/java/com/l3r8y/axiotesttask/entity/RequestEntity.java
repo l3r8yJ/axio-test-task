@@ -6,16 +6,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -32,7 +32,7 @@ public class RequestEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id_request")
-    private int idRequest;
+    private long idRequest;
 
     @Basic
     @Column(name = "status")
@@ -46,16 +46,20 @@ public class RequestEntity implements Serializable {
     @Column(name = "amount")
     private BigDecimal amount;
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private CustomerEntity customer;
+
     @Override
     public int hashCode() {
         return Objects.hash(this.idRequest, this.status, this.period, this.amount);
     }
 
     @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || this.getClass() != o.getClass()) return false;
-        final RequestEntity that = (RequestEntity) o;
+    public boolean equals(final Object obj) {
+        if (this == obj) return true;
+        if (obj == null || this.getClass() != obj.getClass()) return false;
+        final RequestEntity that = (RequestEntity) obj;
         return this.idRequest == that.idRequest
             && this.status == that.status
             && this.period == that.period
