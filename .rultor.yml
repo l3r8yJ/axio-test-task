@@ -4,10 +4,12 @@ merge:
   script: |-
     sudo update-java-alternatives --set java-1.17.0-openjdk-amd64
     sudo export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-    mvn clean install --errors-batch-mode
+    mvn clean install --errors
 release:
   pre: false
   script: |-
     [[ "${tag}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || exit -1
     git commit -am "${tag}"
-    mvn clean install --errors-batch-mode
+    sudo update-java-alternatives --set java-1.17.0-openjdk-amd64
+    sudo export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+    mvn clean install --errors
