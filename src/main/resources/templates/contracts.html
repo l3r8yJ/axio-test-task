@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
@@ -17,33 +17,34 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Заявка</th>
+            <th>ФИО</th>
             <th>Дата подписания</th>
             <th>Статус</th>
         </tr>
         </thead>
-        <tbody>
-        <tr>
-            <td>John Doe</td>
-            <td>john@example.com</td>
-            <td>не подписан</td>
-            <td>
-                <form>
-                    <button type="submit" class="btn btn-primary">Подписать</button>
-                </form>
-            </td>
-        </tr>
-        <tr>
-            <td>Mary</td>
-            <td>Moe</td>
-            <td>mary@example.com</td>
-        </tr>
-        <tr>
-            <td>July</td>
-            <td>Dooley</td>
-            <td>july@example.com</td>
-        </tr>
-        </tbody>
+        <div th:switch="${contracts}">
+            <h2 th:case="null">Клиенты пока отсутствуют</h2>
+            <div th:case="*">
+                <tbody>
+                    <tr th:each="contract : ${contracts}">
+                        <td th:text="${contract.request.customer.fio}"></td>
+                        <td th:text="${contract.dateSignature}"></td>
+                        <td th:text="${contract.signed} ? 'Подписан' : 'Не подписан'"></td>
+                        <div th:if="${!contract.signed}">
+                            <td>
+                                <form action="#"
+                                      th:action="@{/contract/assign/{id}(id=${contract.idContract})}"
+                                      th:object="${contract}"
+                                      method="get"
+                                >
+                                    <button type="submit" class="btn btn-primary">Подписать</button>
+                                </form>
+                            </td>
+                        </div>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
     </table>
 </div>
 </body>
