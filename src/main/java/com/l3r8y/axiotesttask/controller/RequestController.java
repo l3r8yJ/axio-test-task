@@ -5,7 +5,9 @@ import com.l3r8y.axiotesttask.service.CustomerService;
 import com.l3r8y.axiotesttask.service.RequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -22,6 +24,18 @@ public class RequestController {
     ) {
         this.requestService = requestService;
         this.customerService = customerService;
+    }
+
+    @GetMapping("/requests")
+    public String requests(final Model model) {
+        model.addAttribute("requests", this.requestService.all());
+        return "requests";
+    }
+
+    @GetMapping("/request/new")
+    public String newRequest(final Model model) {
+        model.addAttribute("customer", new CustomerEntity());
+        return "request-new";
     }
 
     @PostMapping("/request/new/send")
