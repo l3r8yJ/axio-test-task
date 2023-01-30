@@ -17,8 +17,8 @@
         <a href="/">Назад</a>
     </div>
     <div class="row height d-flex justify-content-center align-items-center">
-        <form class="d-flex">
-            <input class="form-control me-1" type="search" placeholder="Фио" aria-label="Search">
+        <form class="d-flex" action="/customers/search" method="get">
+            <input class="form-control me-1" type="search" placeholder="Фио" aria-label="Search" name="fio">
             <button class="btn btn-primary" type="submit">Найти</button>
         </form>
     </div>
@@ -36,43 +36,47 @@
             <button class="btn btn-primary" type="submit">Найти</button>
         </form>
     </div>
-    <div th:switch="${customers}">
-        <h2 th:case="null">Клиенты пока отсутствуют</h2>
-        <div th:case="*">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>ФИО</th>
-                    <th>Паспорт</th>
-                    <th>Семейное положение</th>
-                    <th>Адрес прописки</th>
-                    <th>Контактный телефон</th>
-                    <th>Сведения о занятости</th>
-                    <th>Сумма желаемого кредита</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="customer : ${customers}">
-                        <td th:text="${customer.fio}"></td>
-                        <td th:text="${customer.passport}"></td>
-                        <td th:text="${customer.marital} ? 'Состоит в браке' : 'Не состоит в браке'"></td>
-                        <td th:text="${customer.address}"></td>
-                        <td th:text="${customer.phone}"></td>
-                        <td th:text="${customer.employment}"></td>
-                        <td th:text="${#numbers.formatCurrency(customer.creditAmount)}"></td>
-                        <td>
-                            <form action="#"
-                                  th:action="@{/customers/delete/{id}(id=${customer.id})}"
-                                  th:object="${customer}"
-                                  method="get"
-                            >
-                                <button type="submit" class="btn btn-primary">Удалить</button>
-                            </form>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <br>
+    <div th:if="${customers} == null AND ${customerNotFound} == null">
+        <h2>Клиенты пока отсутствуют</h2>
+    </div>
+    <div th:if="${customers} == null AND ${customerNotFound} != null">
+        <p th:text="${customerNotFound}"></p>
+    </div>
+    <div th:if="${customers} != null">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>ФИО</th>
+                <th>Паспорт</th>
+                <th>Семейное положение</th>
+                <th>Адрес прописки</th>
+                <th>Контактный телефон</th>
+                <th>Сведения о занятости</th>
+                <th>Сумма желаемого кредита</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer : ${customers}">
+                <td th:text="${customer.fio}"></td>
+                <td th:text="${customer.passport}"></td>
+                <td th:text="${customer.marital} ? 'Состоит в браке' : 'Не состоит в браке'"></td>
+                <td th:text="${customer.address}"></td>
+                <td th:text="${customer.phone}"></td>
+                <td th:text="${customer.employment}"></td>
+                <td th:text="${#numbers.formatCurrency(customer.creditAmount)}"></td>
+                <td>
+                    <form action="#"
+                          th:action="@{/customers/delete/{id}(id=${customer.id})}"
+                          th:object="${customer}"
+                          method="get"
+                    >
+                        <button type="submit" class="btn btn-primary">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 </body>

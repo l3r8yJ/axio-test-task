@@ -1,10 +1,9 @@
 package com.l3r8y.axiotesttask.controller;
 
-import com.l3r8y.axiotesttask.entity.RequestEntity;
+import com.l3r8y.axiotesttask.dto.CustomerSearch;
+import com.l3r8y.axiotesttask.exception.CustomerNotFoundException;
 import com.l3r8y.axiotesttask.service.CustomerService;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +29,26 @@ public class CustomerController {
     public String delete(@PathVariable final Long id) {
         this.customerService.delete(id);
         return "redirect:/customers";
+    }
+
+    @GetMapping("/customers/search{fio}{phone}{passport}")
+    public String search(
+        @PathVariable(required = false) final String fio,
+        @PathVariable(required = false) final String phone,
+        @PathVariable(required = false) final String passport,
+        final Model model
+    ) {
+        try {
+            model.addAttribute(
+                "customers",
+                this.customerService.search(
+                    new CustomerSearch(fio, passport, phone)
+                )
+            );
+        } catch (final CustomerNotFoundException ex) {
+            model.addAttribute("customerNotFound", ex.getMessage());
+        }
+        return "/customers";
     }
 
 }
