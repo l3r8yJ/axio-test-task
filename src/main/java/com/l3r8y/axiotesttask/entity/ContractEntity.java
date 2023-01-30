@@ -20,6 +20,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "contract", schema = "public", catalog = "postgres")
@@ -46,6 +48,7 @@ public class ContractEntity {
 
     @OneToOne
     @JoinColumn(name = "id_request")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private RequestEntity request;
 
     @Override

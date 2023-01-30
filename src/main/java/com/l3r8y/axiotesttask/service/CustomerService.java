@@ -11,7 +11,7 @@ public interface CustomerService {
 
     void update(CustomerEntity dto);
 
-    void delete(CustomerEntity dto);
+    void delete(Long id);
 
     CustomerEntity byId(Long id);
 
