@@ -38,6 +38,15 @@
                         <td th:text="${customer.phone}"></td>
                         <td th:text="${customer.employment}"></td>
                         <td th:text="${#numbers.formatCurrency(customer.creditAmount)}"></td>
+                        <td>
+                            <form action="#"
+                                  th:action="@{/customers/delete/{id}(id=${customer.id})}"
+                                  th:object="${customer}"
+                                  method="get"
+                            >
+                                <button type="submit" class="btn btn-primary">Удалить</button>
+                            </form>
+                        </td>
                     </tr>
                 </tbody>
             </table>

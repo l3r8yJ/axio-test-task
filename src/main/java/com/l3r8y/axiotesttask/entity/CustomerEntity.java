@@ -1,6 +1,7 @@
 package com.l3r8y.axiotesttask.entity;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -60,7 +61,7 @@ public class CustomerEntity implements Serializable {
     @Column(name = "credit_amount")
     private BigDecimal creditAmount;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<RequestEntity> requests;
 
     @Override

@@ -34,8 +34,8 @@ public final class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void delete(final CustomerEntity entity) {
-        this.repository.delete(entity);
+    public void delete(final Long id) {
+        this.repository.deleteById(id);
     }
 
     @Override

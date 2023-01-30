@@ -14,7 +14,7 @@
 <div class="container mt-3">
     <h2>Новая заявка</h2>
     <a href="/">Назад</a>
-    <form action="#" th:action="@{/request/new/send}" th:object="${customer}" method="post">
+    <form action="#" th:action="@{/request/new/processing}" th:object="${customer}" method="post">
         <div class="mb-3 mt-3">
             <label for="fio" class="form-label">ФИО:</label>
             <input type="text" th:field="*{fio}" class="form-control" id="fio" placeholder="ФИО">

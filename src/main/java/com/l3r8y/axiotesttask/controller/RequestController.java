@@ -38,7 +38,7 @@ public class RequestController {
         return "request-new";
     }
 
-    @PostMapping("/request/new/send")
+    @PostMapping("/request/new/processing")
     public String requestCreate(
         final CustomerEntity entity,
         final BindingResult result

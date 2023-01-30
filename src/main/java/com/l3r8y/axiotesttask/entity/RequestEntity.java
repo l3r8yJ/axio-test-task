@@ -22,6 +22,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "request")
@@ -52,10 +54,12 @@ public class RequestEntity implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private CustomerEntity customer;
 
     @OneToOne
     @JoinColumn(name = "contract_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private ContractEntity contract;
 
     @Override
