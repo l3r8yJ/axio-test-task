@@ -12,8 +12,30 @@
 </head>
 <body>
 <div class="container mt-3">
-    <h2>Клиенты</h2>
-    <a href="/">Назад</a>
+    <div class="col">
+        <h2>Клиенты</h2>
+        <a href="/">Назад</a>
+    </div>
+    <div class="row height d-flex justify-content-center align-items-center">
+        <form class="d-flex">
+            <input class="form-control me-1" type="search" placeholder="Фио" aria-label="Search">
+            <button class="btn btn-primary" type="submit">Найти</button>
+        </form>
+    </div>
+    <br>
+    <div class="row height d-flex justify-content-center align-items-center">
+        <form class="d-flex">
+            <input class="form-control me-1" type="search" placeholder="Паспорт" aria-label="Search">
+            <button class="btn btn-primary" type="submit">Найти</button>
+        </form>
+    </div>
+    <br>
+    <div class="row height d-flex justify-content-center align-items-center">
+        <form class="d-flex">
+            <input class="form-control me-1" type="search" placeholder="Номер телефона" aria-label="Search">
+            <button class="btn btn-primary" type="submit">Найти</button>
+        </form>
+    </div>
     <div th:switch="${customers}">
         <h2 th:case="null">Клиенты пока отсутствуют</h2>
         <div th:case="*">
