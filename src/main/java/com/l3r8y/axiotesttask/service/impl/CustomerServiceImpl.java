@@ -1,15 +1,18 @@
 package com.l3r8y.axiotesttask.service.impl;
 
+import com.l3r8y.axiotesttask.dao.CustomerRepository;
+import com.l3r8y.axiotesttask.dto.CustomerSearch;
 import com.l3r8y.axiotesttask.entity.CustomerEntity;
-import com.l3r8y.axiotesttask.repository.CustomerRepository;
+import com.l3r8y.axiotesttask.exception.CustomerNotFoundException;
 import com.l3r8y.axiotesttask.service.CustomerService;
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public final class CustomerServiceImpl implements CustomerService {
+public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository repository;
 
@@ -19,34 +22,42 @@ public final class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional
     public List<CustomerEntity> all() {
         return this.repository.findAll();
     }
 
     @Override
+    @Transactional
     public void create(final CustomerEntity entity) {
         this.repository.save(entity);
     }
 
     @Override
-    public void update(final CustomerEntity entity) {
-        this.repository.save(entity);
-    }
-
-    @Override
+    @Transactional
     public void delete(final Long id) {
         this.repository.deleteById(id);
     }
 
     @Override
-    public CustomerEntity byId(final Long id) {
-        return this.repository
-            .findById(id)
-            .orElseThrow(NoSuchElementException::new);
-    }
-
-    @Override
-    public List<CustomerEntity> search(final CustomerEntity dto) {
-        return null;
+    @Transactional
+    public List<CustomerEntity> search(final CustomerSearch search)
+        throws CustomerNotFoundException {
+        if (!search.getPhone().equals("%")) {
+            return Optional.of(
+                this.repository.findCustomerEntitiesByPhoneContaining(search.getPhone())
+            ).orElseThrow(CustomerNotFoundException::new);
+        }
+        if (!search.getFio().equals("%")) {
+            return Optional.of(
+                this.repository.findCustomerEntitiesByFioContaining(search.getFio())
+            ).orElseThrow(CustomerNotFoundException::new);
+        }
+        if (!search.getPassport().equals("%")) {
+            return Optional.of(
+                this.repository.findCustomerEntitiesByPassportContaining(search.getPassport())
+            ).orElseThrow(CustomerNotFoundException::new);
+        }
+        throw new CustomerNotFoundException();
     }
 }

@@ -1,13 +1,14 @@
 package com.l3r8y.axiotesttask.service.impl;
 
 import com.l3r8y.axiotesttask.entity.ContractEntity;
-import com.l3r8y.axiotesttask.repository.ContractRepository;
+import com.l3r8y.axiotesttask.dao.ContractRepository;
 import com.l3r8y.axiotesttask.service.ContractService;
 import java.sql.Date;
 import java.time.Instant;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ContractServiceImpl implements ContractService {
@@ -20,11 +21,13 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
+    @Transactional
     public List<ContractEntity> all() {
         return this.repository.findAll();
     }
 
     @Override
+    @Transactional
     public void assign(final ContractEntity contract) {
         contract.setSigned(true);
         contract.setDateSignature(new Date(Instant.now().toEpochMilli()));
@@ -32,6 +35,7 @@ public class ContractServiceImpl implements ContractService {
     }
 
     @Override
+    @Transactional
     public ContractEntity byId(final Long id) {
         return this.repository.findById(id).orElseThrow();
     }

@@ -26,19 +26,19 @@ public class RequestController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/requests")
+    @GetMapping("requests")
     public String requests(final Model model) {
         model.addAttribute("requests", this.requestService.all());
         return "requests";
     }
 
-    @GetMapping("/request/new")
+    @GetMapping("request/new")
     public String newRequest(final Model model) {
         model.addAttribute("customer", new CustomerEntity());
         return "request-new";
     }
 
-    @PostMapping("/request/new/processing")
+    @PostMapping("request/new/processing")
     public String requestCreate(
         final CustomerEntity entity,
         final BindingResult result

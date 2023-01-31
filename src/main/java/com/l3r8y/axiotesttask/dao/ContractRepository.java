@@ -1,4 +1,4 @@
-package com.l3r8y.axiotesttask.repository;
+package com.l3r8y.axiotesttask.dao;
 
 import com.l3r8y.axiotesttask.entity.ContractEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
