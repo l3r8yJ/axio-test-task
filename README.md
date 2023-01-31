@@ -4,11 +4,10 @@
  2) Start **database** with port `5432`
  3) Start container with **application** with any port (I'm usually do it on `8080`)
  4) Open in browser `http://localhost:application_port/`
- 
 ## Схема базы данных
 ![image](https://user-images.githubusercontent.com/46355873/215897226-c5a389f0-ee55-493e-a1d6-1b9f539eca59.jpeg)
-
- 
+## CI/CI GitHub actions(build project, build docker image after merged pull request)
+![image](https://user-images.githubusercontent.com/46355873/215898250-677dfaf7-0891-4cc2-bc4e-4abce504dcdf.jpeg)
 ## Главная страница 
 ![Screenshot 2023-02-01 at 02 07 34](https://user-images.githubusercontent.com/46355873/215895329-71a80d58-174d-4082-b87e-68dcb94b59d6.jpg)
 ## Список клиентов
