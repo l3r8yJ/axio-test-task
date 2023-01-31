@@ -1,7 +1,7 @@
 package com.l3r8y.axiotesttask.service.impl;
 
 import com.l3r8y.axiotesttask.entity.ContractEntity;
-import com.l3r8y.axiotesttask.repository.ContractRepository;
+import com.l3r8y.axiotesttask.dao.ContractRepository;
 import com.l3r8y.axiotesttask.service.ContractService;
 import java.sql.Date;
 import java.time.Instant;

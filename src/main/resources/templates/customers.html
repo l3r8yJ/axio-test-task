@@ -16,6 +16,7 @@
         <h2>Клиенты</h2>
         <a href="/">Назад</a>
     </div>
+    <br>
     <div class="row height d-flex justify-content-center align-items-center">
         <form class="d-flex" action="/customers/search" method="get">
             <input class="form-control me-1" type="search" placeholder="Фио" aria-label="Search" name="fio">
@@ -24,17 +25,23 @@
     </div>
     <br>
     <div class="row height d-flex justify-content-center align-items-center">
-        <form class="d-flex">
-            <input class="form-control me-1" type="search" placeholder="Паспорт" aria-label="Search">
+        <form class="d-flex" action="/customers/search">
+            <input class="form-control me-1" type="search" placeholder="Паспорт" aria-label="Search" name="passport">
             <button class="btn btn-primary" type="submit">Найти</button>
         </form>
     </div>
     <br>
     <div class="row height d-flex justify-content-center align-items-center">
-        <form class="d-flex">
-            <input class="form-control me-1" type="search" placeholder="Номер телефона" aria-label="Search">
+        <form class="d-flex" action="/customers/search">
+            <input class="form-control me-1" type="search" placeholder="Номер телефона" aria-label="Search" name="phone">
             <button class="btn btn-primary" type="submit">Найти</button>
         </form>
+    </div>
+    <br>
+    <div>
+        <a href="/customers">
+            <button class="btn btn-primary" type="submit">Отчистить фильтр</button>
+        </a>
     </div>
     <br>
     <div th:if="${customers} == null AND ${customerNotFound} == null">

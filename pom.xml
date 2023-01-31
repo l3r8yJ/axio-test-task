@@ -17,6 +17,7 @@
     <java.version>17</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
+    <context.path>spring-mvc</context.path>
   </properties>
   <dependencies>
     <dependency>

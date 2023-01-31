@@ -2,7 +2,7 @@ package com.l3r8y.axiotesttask.exception;
 
 /**
  * Exception when {@link com.l3r8y.axiotesttask.entity.CustomerEntity} not found
- * in {@link com.l3r8y.axiotesttask.repository.CustomerRepository}
+ * in {@link com.l3r8y.axiotesttask.dao.CustomerRepository}
  */
 public class CustomerNotFoundException extends Exception {
     public CustomerNotFoundException() {

@@ -11,11 +11,7 @@ public interface CustomerService {
 
     void create(CustomerEntity dto);
 
-    void update(CustomerEntity dto);
-
     void delete(Long id);
-
-    CustomerEntity byId(Long id);
 
     List<CustomerEntity> search(CustomerSearch search) throws CustomerNotFoundException;
 }
