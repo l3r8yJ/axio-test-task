@@ -9,9 +9,10 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public final class CustomerServiceImpl implements CustomerService {
+public class CustomerServiceImpl implements CustomerService {
 
     private final CustomerRepository repository;
 
@@ -21,21 +22,25 @@ public final class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    @Transactional
     public List<CustomerEntity> all() {
         return this.repository.findAll();
     }
 
     @Override
+    @Transactional
     public void create(final CustomerEntity entity) {
         this.repository.save(entity);
     }
 
     @Override
+    @Transactional
     public void delete(final Long id) {
         this.repository.deleteById(id);
     }
 
     @Override
+    @Transactional
     public List<CustomerEntity> search(final CustomerSearch search)
         throws CustomerNotFoundException {
         if (!search.getPhone().equals("%")) {

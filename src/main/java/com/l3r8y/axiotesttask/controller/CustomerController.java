@@ -22,19 +22,19 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/customers")
+    @GetMapping("customers")
     public String customers(final Model model) {
         model.addAttribute("customers", this.customerService.all());
         return "customers";
     }
 
-    @GetMapping("/customers/delete/{id}")
+    @GetMapping("customers/delete/{id}")
     public String delete(@PathVariable final Long id) {
         this.customerService.delete(id);
         return "redirect:/customers";
     }
 
-    @GetMapping("/customers/search")
+    @GetMapping("customers/search")
     public String search(
         @RequestParam(required = false, defaultValue = "%") final String fio,
         @RequestParam(required = false, defaultValue = "%") final String phone,
@@ -52,7 +52,7 @@ public class CustomerController {
         } catch (final CustomerNotFoundException ex) {
             model.addAttribute("customerNotFound", ex.getMessage());
         }
-        return "/customers";
+        return "customers";
     }
 
 }

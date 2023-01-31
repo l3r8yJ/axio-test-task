@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class RequestServiceImpl implements RequestService {
@@ -27,11 +28,13 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
+    @Transactional
     public List<RequestEntity> all() {
         return this.requestRepository.findAll();
     }
 
     @Override
+    @Transactional
     public void create(final CustomerEntity customer) {
         final RequestEntity request = this.requestByCustomer(customer);
         this.requestRepository.save(request);

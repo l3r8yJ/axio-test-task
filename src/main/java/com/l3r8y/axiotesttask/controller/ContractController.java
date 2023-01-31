@@ -17,13 +17,13 @@ public class ContractController {
         this.contractService = contractService;
     }
 
-    @GetMapping("/contracts")
+    @GetMapping("contracts")
     public String contracts(final Model model) {
         model.addAttribute("contracts", this.contractService.all());
         return "contracts";
     }
 
-    @GetMapping("/contract/assign/{id}")
+    @GetMapping("contract/assign/{id}")
     public String sign(@PathVariable final String id) {
         this.contractService.assign(
             this.contractService.byId(Long.valueOf(id))
