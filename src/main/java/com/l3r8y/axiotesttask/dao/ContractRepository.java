@@ -1,10 +1,15 @@
 package com.l3r8y.axiotesttask.dao;
 
 import com.l3r8y.axiotesttask.entity.ContractEntity;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface ContractRepository extends JpaRepository<ContractEntity, Long> {
+import java.util.List;
+import java.util.Optional;
 
+public interface ContractRepository {
+
+    List<ContractEntity> findAll();
+
+    void save(ContractEntity contract);
+
+    Optional<ContractEntity> findById(Long id);
 }

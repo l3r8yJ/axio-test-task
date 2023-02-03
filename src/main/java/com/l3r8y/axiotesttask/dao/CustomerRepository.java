@@ -1,14 +1,11 @@
 package com.l3r8y.axiotesttask.dao;
 
 import com.l3r8y.axiotesttask.entity.CustomerEntity;
-import java.util.List;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface CustomerRepository extends JpaRepository<CustomerEntity, Long>,
-    JpaSpecificationExecutor<CustomerEntity> {
+import java.util.List;
+
+public interface CustomerRepository {
 
     List<CustomerEntity> findCustomerEntitiesByFioContaining(String fio);
 
@@ -16,4 +13,9 @@ public interface CustomerRepository extends JpaRepository<CustomerEntity, Long>,
 
     List<CustomerEntity> findCustomerEntitiesByPassportContaining(String passport);
 
+    List<CustomerEntity> findAll();
+
+    void save(CustomerEntity customer);
+
+    void deleteById(Long id);
 }
