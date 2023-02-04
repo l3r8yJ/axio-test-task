@@ -15,38 +15,58 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     private final SessionFactory factory;
 
     @Autowired
-    public CustomerRepositoryImpl(SessionFactory factory) {
+    public CustomerRepositoryImpl(final SessionFactory factory) {
         this.factory = factory;
     }
 
     @Override
-    public List<CustomerEntity> findCustomerEntitiesByFioContaining(String fio) {
-        return null;
+    public List<CustomerEntity> findCustomerEntitiesByFioContaining(final String fio) {
+        return this.currentSession().createQuery(
+            this.likeQuery("fio"),
+            CustomerEntity.class
+        ).setParameter("fio", fio).list();
     }
 
     @Override
-    public List<CustomerEntity> findCustomerEntitiesByPhoneContaining(String phone) {
-        return null;
+    public List<CustomerEntity> findCustomerEntitiesByPhoneContaining(final String phone) {
+        return this.currentSession().createQuery(
+            this.likeQuery("phone"),
+            CustomerEntity.class
+        ).setParameter("phone", phone).list();
+
     }
 
     @Override
-    public List<CustomerEntity> findCustomerEntitiesByPassportContaining(String passport) {
-        return null;
+    public List<CustomerEntity> findCustomerEntitiesByPassportContaining(final String passport) {
+        return this.currentSession().createQuery(
+            this.likeQuery("passport"),
+            CustomerEntity.class
+        ).setParameter("passport", passport).list();
     }
 
     @Override
     public List<CustomerEntity> findAll() {
-        final Session session = this.factory.getCurrentSession();
-        return session.createQuery("from CustomerEntity", CustomerEntity.class).list();
+        return this.currentSession()
+            .createQuery("from CustomerEntity", CustomerEntity.class).list();
     }
 
     @Override
-    public void save(CustomerEntity customer) {
-
+    public void save(final CustomerEntity customer) {
+        this.currentSession().save(customer);
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(final Long id) {
+        this.currentSession().delete(
+            this.currentSession().get(CustomerEntity.class, id.intValue())
+        );
+    }
 
+    private Session currentSession() {
+        return this.factory.getCurrentSession();
+    }
+
+    private String likeQuery(final String field) {
+        return "from CustomerEntity where " + field + " like concat('%', :" + field + ", '%')";
     }
 }

@@ -12,4 +12,6 @@ public interface ContractRepository {
     void save(ContractEntity contract);
 
     Optional<ContractEntity> findById(Long id);
+
+    void update(ContractEntity contract);
 }
