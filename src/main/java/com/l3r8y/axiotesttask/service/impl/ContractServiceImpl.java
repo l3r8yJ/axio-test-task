@@ -29,9 +29,13 @@ public class ContractServiceImpl implements ContractService {
     @Override
     @Transactional
     public void assign(final ContractEntity contract) {
-        contract.setSigned(true);
-        contract.setDateSignature(new Date(Instant.now().toEpochMilli()));
-        this.repository.save(contract);
+        final ContractEntity current = ContractEntity.builder()
+            .idContract(contract.getIdContract())
+            .signed(true)
+            .dateSignature(new Date(Instant.now().toEpochMilli()))
+            .request(contract.getRequest())
+            .build();
+        this.repository.update(current);
     }
 
     @Override

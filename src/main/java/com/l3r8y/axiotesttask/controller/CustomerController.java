@@ -42,12 +42,9 @@ public class CustomerController {
         final Model model
     ) {
         try {
-            final List<CustomerEntity> search = this.customerService.search(
-                new CustomerSearch(fio, passport, phone)
-            );
             model.addAttribute(
                 "customers",
-                search
+                this.customerService.search(new CustomerSearch(fio, passport, phone))
             );
         } catch (final CustomerNotFoundException ex) {
             model.addAttribute("customerNotFound", ex.getMessage());
