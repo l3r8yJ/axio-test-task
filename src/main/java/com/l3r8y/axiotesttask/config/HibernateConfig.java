@@ -33,7 +33,7 @@ public class HibernateConfig {
         final BasicDataSource source = new BasicDataSource();
         // sensitive data mustn't be here
         source.setDriverClassName("org.postgresql.Driver");
-        source.setUrl("jdbc:postgresql://127.0.0.1:5432/postgres");
+        source.setUrl("jdbc:postgresql://docker.internal.host:5432/postgres");
         source.setUsername("postgres");
         source.setPassword("root");
         return source;
