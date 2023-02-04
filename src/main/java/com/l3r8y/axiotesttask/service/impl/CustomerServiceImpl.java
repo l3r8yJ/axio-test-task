@@ -45,17 +45,17 @@ public class CustomerServiceImpl implements CustomerService {
         throws CustomerNotFoundException {
         if (!search.getPhone().equals("%")) {
             return Optional.of(
-                this.repository.findCustomerEntitiesByPhoneContaining(search.getPhone())
+                this.repository.byPhoneLike(search.getPhone())
             ).orElseThrow(CustomerNotFoundException::new);
         }
         if (!search.getFio().equals("%")) {
             return Optional.of(
-                this.repository.findCustomerEntitiesByFioContaining(search.getFio())
+                this.repository.byFioLike(search.getFio())
             ).orElseThrow(CustomerNotFoundException::new);
         }
         if (!search.getPassport().equals("%")) {
             return Optional.of(
-                this.repository.findCustomerEntitiesByPassportContaining(search.getPassport())
+                this.repository.byPassportLike(search.getPassport())
             ).orElseThrow(CustomerNotFoundException::new);
         }
         throw new CustomerNotFoundException();

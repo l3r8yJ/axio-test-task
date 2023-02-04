@@ -20,7 +20,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public List<CustomerEntity> findCustomerEntitiesByFioContaining(final String fio) {
+    public List<CustomerEntity> byFioLike(final String fio) {
         return this.currentSession().createQuery(
             this.likeQuery("fio"),
             CustomerEntity.class
@@ -28,7 +28,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public List<CustomerEntity> findCustomerEntitiesByPhoneContaining(final String phone) {
+    public List<CustomerEntity> byPhoneLike(final String phone) {
         return this.currentSession().createQuery(
             this.likeQuery("phone"),
             CustomerEntity.class
@@ -37,7 +37,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public List<CustomerEntity> findCustomerEntitiesByPassportContaining(final String passport) {
+    public List<CustomerEntity> byPassportLike(final String passport) {
         return this.currentSession().createQuery(
             this.likeQuery("passport"),
             CustomerEntity.class

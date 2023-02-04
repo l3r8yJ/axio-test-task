@@ -63,7 +63,6 @@ public class ContractRepositoryImpl implements ContractRepository {
             }
             throw new IllegalStateException("Error while saving new contract", ex);
         }
-
     }
 
     private Session currentSession() {

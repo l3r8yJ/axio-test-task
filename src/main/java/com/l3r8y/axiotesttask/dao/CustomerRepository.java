@@ -1,17 +1,16 @@
 package com.l3r8y.axiotesttask.dao;
 
 import com.l3r8y.axiotesttask.entity.CustomerEntity;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 public interface CustomerRepository {
 
-    List<CustomerEntity> findCustomerEntitiesByFioContaining(String fio);
+    List<CustomerEntity> byFioLike(String fio);
 
-    List<CustomerEntity> findCustomerEntitiesByPhoneContaining(String phone);
+    List<CustomerEntity> byPhoneLike(String phone);
 
-    List<CustomerEntity> findCustomerEntitiesByPassportContaining(String passport);
+    List<CustomerEntity> byPassportLike(String passport);
 
     List<CustomerEntity> findAll();
 
